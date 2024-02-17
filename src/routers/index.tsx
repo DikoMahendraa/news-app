@@ -2,7 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import Profile from '../views/Profile';
+import Bookmarks from '../views/Bookmarks';
 import SearchNews from '../views/SearchNews';
 import Home from '../views/Home';
 import BottomNavigator from '../components/BottomNavigator';
@@ -26,8 +26,8 @@ const MainScreen = () => {
       />
       <Tab.Screen
         options={{headerShown: false}}
-        name="Bookmark"
-        component={Profile}
+        name="Bookmarks"
+        component={Bookmarks}
       />
     </Tab.Navigator>
   );
