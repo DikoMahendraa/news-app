@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Profile from '../views/Profile';
-import Playlist from '../views/Playlist';
+import SearchNews from '../views/SearchNews';
 import Home from '../views/Home';
 import BottomNavigator from '../components/BottomNavigator';
 import NewsDetail from '../views/NewsDetail';
@@ -14,15 +14,19 @@ const Stack = createStackNavigator();
 const MainScreen = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen options={{headerShown: false}} name="Home" component={Home} />
       <Tab.Screen
         options={{headerShown: false}}
-        name="Messages"
-        component={Playlist}
+        name="Berita"
+        component={Home}
       />
       <Tab.Screen
         options={{headerShown: false}}
-        name="Hospitals"
+        name="Cari"
+        component={SearchNews}
+      />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Bookmark"
         component={Profile}
       />
     </Tab.Navigator>
