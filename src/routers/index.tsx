@@ -13,9 +13,17 @@ const Stack = createStackNavigator();
 const MainScreen = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Messages" component={Playlist} />
-      <Tab.Screen name="Hospitals" component={Profile} />
+      <Tab.Screen options={{headerShown: false}} name="Home" component={Home} />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Messages"
+        component={Playlist}
+      />
+      <Tab.Screen
+        options={{headerShown: false}}
+        name="Hospitals"
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 };
