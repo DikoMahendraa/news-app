@@ -3,7 +3,7 @@ import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-export default function Home() {
+export default function Home({navigation}) {
   return (
     <ScrollView>
       <View style={{flex: 1, marginTop: 26, padding: 6, overflow: 'hidden'}}>
@@ -70,10 +70,11 @@ export default function Home() {
         </View>
 
         <View style={{marginTop: 12}}>
-          {Array.from({length: 10}).map(key => (
+          {Array.from({length: 10}).map(() => (
             <TouchableOpacity
+              onPress={() => navigation.push('NewsDetail')}
               style={{flexDirection: 'row', marginTop: 6}}
-              key={key}>
+              key={String(new Date())}>
               <View
                 style={{height: 60, width: 60, backgroundColor: 'yellow'}}
               />
