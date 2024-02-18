@@ -2,8 +2,9 @@
 import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import MoleculesCard from '../components/molecules/Card';
 
-export default function Home({navigation}) {
+export default function Home() {
   return (
     <ScrollView>
       <View style={{flex: 1, marginTop: 26, padding: 6, overflow: 'hidden'}}>
@@ -71,43 +72,13 @@ export default function Home({navigation}) {
 
         <View style={{marginTop: 12}}>
           {Array.from({length: 10}).map(() => (
-            <TouchableOpacity
-              onPress={() => navigation.push('NewsDetail')}
-              style={{flexDirection: 'row', marginTop: 6}}
-              key={String(new Date())}>
-              <View
-                style={{height: 60, width: 60, backgroundColor: 'yellow'}}
-              />
-              <View style={{marginLeft: 6}}>
-                <Text
-                  style={{
-                    fontWeight: '600',
-                    fontSize: 16,
-                    flexWrap: 'wrap',
-                    width: '90%',
-                  }}>
-                  Diduga mahasiswa mesum di...{' '}
-                </Text>
-                <Text
-                  style={{
-                    fontWeight: '400',
-                    fontSize: 12,
-                    color: 'gray',
-                    marginTop: 4,
-                  }}>
-                  12 January 2023
-                </Text>
-                <Text
-                  style={{
-                    fontWeight: '400',
-                    fontSize: 14,
-                    color: 'gray',
-                    marginTop: 4,
-                  }}>
-                  kejadian tersebut terjadi pada tangga yan
-                </Text>
-              </View>
-            </TouchableOpacity>
+            <MoleculesCard
+              onPress={() => ({})}
+              title="title"
+              description="testing description"
+              time="12 january 2024"
+              key={String(new Date())}
+            />
           ))}
         </View>
       </View>

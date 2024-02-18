@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Bookmarks from '../views/Bookmarks';
 import SearchNews from '../views/SearchNews';
 import Home from '../views/Home';
-import BottomNavigator from '../components/BottomNavigator';
+import BottomNavigator from '../components/molecules/BottomNavigator';
 import NewsDetail from '../views/NewsDetail';
 
 const Tab = createBottomTabNavigator();
