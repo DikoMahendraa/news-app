@@ -22,15 +22,19 @@ export default function Home() {
         <AtomSpaces height={20} />
 
         <View>
-          {Array.from({length: 10}).map(() => (
-            <MoleculesCard
-              onPress={() => ({})}
-              title="title"
-              uri="https://dummyimage.com/600x400/000/fff&text=A"
-              description="testing description"
-              time="12 january 2024"
-              key={String(new Date())}
-            />
+          {Array.from({length: 10}).map(idex => (
+            <>
+              <MoleculesCard
+                onPress={() => ({})}
+                title="title"
+                uri="https://dummyimage.com/600x400/000/fff&text=A"
+                category="sports"
+                author="CNN Indo"
+                time="12 january 2024"
+                key={String(idex)}
+              />
+              <AtomSpaces height={12} key={idex} />
+            </>
           ))}
         </View>
       </View>

@@ -1,6 +1,7 @@
 import {View, Text, TextInput, ScrollView} from 'react-native';
 import React from 'react';
 import MoleculesCard from '../components/molecules/Card';
+import AtomSpaces from '../components/atoms/Spaces';
 
 export default function SearchNews() {
   return (
@@ -24,14 +25,18 @@ export default function SearchNews() {
       <View style={{marginTop: 12}}>
         <ScrollView showsVerticalScrollIndicator={false}>
           {Array.from({length: 10}).map(() => (
-            <MoleculesCard
-              onPress={() => ({})}
-              title="title"
-              uri="https://dummyimage.com/600x400/000/fff&text=B"
-              description="testing description"
-              time="12 january 2024"
-              key={String(new Date())}
-            />
+            <>
+              <MoleculesCard
+                onPress={() => ({})}
+                title="title"
+                uri="https://dummyimage.com/600x400/000/fff&text=B"
+                category="sports"
+                author="CNN Indo"
+                time="12 january 2024"
+                key={String(new Date())}
+              />
+              <AtomSpaces height={12} />
+            </>
           ))}
         </ScrollView>
       </View>

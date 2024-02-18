@@ -19,7 +19,7 @@ export default function MoleculesCard({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{flexDirection: 'row', marginTop: 6}}
+      style={{flexDirection: 'row'}}
       key={String(new Date())}>
       <Image
         width={100}
@@ -31,7 +31,7 @@ export default function MoleculesCard({
         style={{
           marginLeft: 6,
           justifyContent: 'space-between',
-          paddingVertical: 6,
+          paddingBottom: 12,
         }}>
         <Text
           style={{
