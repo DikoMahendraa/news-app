@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import React from 'react';
 
 export default function MoleculesCard({
@@ -6,23 +6,46 @@ export default function MoleculesCard({
   title,
   time,
   uri,
-  description,
+  category,
+  author,
 }: Readonly<{
   onPress: () => void;
   title: string;
   time: string;
-  description: string;
+  author: string;
   uri: string;
+  category: string;
 }>) {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{flexDirection: 'row', marginTop: 6}}
       key={String(new Date())}>
-      <Image width={80} height={80} source={{uri: uri}} />
-      <View style={{marginLeft: 6}}>
+      <Image
+        width={100}
+        height={100}
+        source={{uri: uri}}
+        style={{borderRadius: 6}}
+      />
+      <View
+        style={{
+          marginLeft: 6,
+          justifyContent: 'space-between',
+          paddingVertical: 6,
+        }}>
         <Text
           style={{
+            paddingTop: 6,
+            fontWeight: '400',
+            fontSize: 12,
+            color: 'gray',
+            textTransform: 'capitalize',
+          }}>
+          {category}
+        </Text>
+        <Text
+          style={{
+            textTransform: 'capitalize',
             fontWeight: '600',
             fontSize: 16,
             flexWrap: 'wrap',
@@ -30,25 +53,36 @@ export default function MoleculesCard({
           }}>
           {title}
         </Text>
-        <Text
-          style={{
-            fontWeight: '400',
-            fontSize: 12,
-            color: 'gray',
-            marginTop: 4,
-          }}>
-          {time}
-        </Text>
-        <Text
-          style={{
-            fontWeight: '400',
-            fontSize: 14,
-            color: 'gray',
-            marginTop: 4,
-          }}>
-          {description}
-        </Text>
+
+        <View style={{flexDirection: 'row', alignItems: 'center', gap: 4}}>
+          <Image
+            width={24}
+            height={24}
+            source={{uri: uri}}
+            style={{borderRadius: 12}}
+          />
+          <Text
+            style={{
+              textTransform: 'capitalize',
+              fontWeight: '400',
+              fontSize: 12,
+              color: 'gray',
+            }}>
+            {author}
+          </Text>
+          <Text
+            style={{
+              textTransform: 'capitalize',
+              fontWeight: '400',
+              fontSize: 12,
+              color: 'gray',
+            }}>
+            {time}
+          </Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({});
