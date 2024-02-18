@@ -3,22 +3,17 @@ import React from 'react';
 import {colors} from '../../utils/colors';
 import AtomChip from '../atoms/Chip';
 
-export default function MoleHeroImages() {
+export default function MoleHeroImages({uri, title}) {
   return (
     <View style={styles.container}>
-      <Image
-        source={{uri: 'https://dummyimage.com/600x400/000/fff&text=B'}}
-        style={styles.heroImage}
-      />
+      <Image source={{uri: uri}} style={styles.heroImage} />
       <AtomChip text="Sports" />
       <View style={styles.containerContain}>
         <View style={styles.containRow}>
           <Text style={styles.containRowSrc}>CNN Indonesia</Text>
           <Text style={styles.containRowDate}>6 hours ago</Text>
         </View>
-        <Text style={styles.bigTitle}>
-          Alexander wears modified helmet in road races
-        </Text>
+        <Text style={styles.bigTitle}>{title}</Text>
       </View>
     </View>
   );
@@ -35,6 +30,7 @@ const styles = StyleSheet.create({
   heroImage: {
     position: 'absolute',
     top: 0,
+    backgroundColor: 'red',
     bottom: 0,
     left: 0,
     right: 0,

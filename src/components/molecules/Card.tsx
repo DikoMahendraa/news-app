@@ -31,11 +31,9 @@ export default function MoleculesCard({
         style={{
           marginLeft: 6,
           justifyContent: 'space-between',
-          paddingBottom: 12,
         }}>
         <Text
           style={{
-            paddingTop: 6,
             fontWeight: '400',
             fontSize: 12,
             color: 'gray',
@@ -49,7 +47,8 @@ export default function MoleculesCard({
             fontWeight: '600',
             fontSize: 16,
             flexWrap: 'wrap',
-            width: '90%',
+            marginVertical: 4,
+            width: 240,
           }}>
           {title}
         </Text>
