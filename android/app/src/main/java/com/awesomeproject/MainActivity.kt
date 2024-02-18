@@ -1,4 +1,4 @@
-package com.musicplayer
+package com.awesomeproject
 import android.os.Bundle;
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -11,7 +11,7 @@ class MainActivity : ReactActivity() {
    * Returns the name of the main component registered from JavaScript. This is used to schedule
    * rendering of the component.
    */
-  override fun getMainComponentName(): String = "MusicPlayer"
+  override fun getMainComponentName(): String = "AwesomeProject"
 
   //react-native-screens override
   override fun onCreate(savedInstanceState: Bundle?) {

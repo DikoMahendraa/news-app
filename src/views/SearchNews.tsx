@@ -22,11 +22,12 @@ export default function SearchNews() {
       </View>
 
       <View style={{marginTop: 12}}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {Array.from({length: 10}).map(() => (
             <MoleculesCard
               onPress={() => ({})}
               title="title"
+              uri="https://dummyimage.com/600x400/000/fff&text=B"
               description="testing description"
               time="12 january 2024"
               key={String(new Date())}

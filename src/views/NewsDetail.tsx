@@ -5,7 +5,9 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function NewsDetail({navigation}) {
   return (
-    <ScrollView style={{paddingHorizontal: 12}}>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{paddingHorizontal: 12}}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text style={{fontSize: 12, marginTop: 50, fontWeight: '600'}}>

@@ -1,12 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import MoleculesCard from '../components/molecules/Card';
+import {colors} from '../utils/colors';
 
 export default function Home() {
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{flex: 1, marginTop: 26, padding: 6, overflow: 'hidden'}}>
         <View
           style={{
@@ -14,11 +15,32 @@ export default function Home() {
             borderWidth: 1,
             borderColor: 'gray',
             borderRadius: 6,
+            position: 'relative',
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text>Container</Text>
+          <Image
+            source={{uri: 'https://dummyimage.com/600x400/000/fff&text=B'}}
+            style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}
+          />
+
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              width: '100%',
+              paddingHorizontal: 10,
+              paddingVertical: 10,
+            }}>
+            <Text style={{color: colors.flat, fontSize: 18}}>
+              Seorang Mahasiswa mendapatkan perlakuan yg kurang...
+            </Text>
+            <Text style={{color: colors.gray, fontSize: 12, marginVertical: 4}}>
+              Kriminal
+            </Text>
+            <Text style={{color: colors.primary}}>baca selengkapnya..</Text>
+          </View>
         </View>
 
         <Text
@@ -75,6 +97,7 @@ export default function Home() {
             <MoleculesCard
               onPress={() => ({})}
               title="title"
+              uri="https://dummyimage.com/600x400/000/fff&text=A"
               description="testing description"
               time="12 january 2024"
               key={String(new Date())}

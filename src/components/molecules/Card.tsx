@@ -1,23 +1,25 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
 export default function MoleculesCard({
   onPress,
   title,
   time,
+  uri,
   description,
-}: {
+}: Readonly<{
   onPress: () => void;
   title: string;
   time: string;
   description: string;
-}) {
+  uri: string;
+}>) {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={{flexDirection: 'row', marginTop: 6}}
       key={String(new Date())}>
-      <View style={{height: 60, width: 60, backgroundColor: 'yellow'}} />
+      <Image width={80} height={80} source={{uri: uri}} />
       <View style={{marginLeft: 6}}>
         <Text
           style={{
