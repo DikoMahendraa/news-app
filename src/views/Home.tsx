@@ -8,13 +8,42 @@ import {colors} from '../utils/colors';
 export default function Home() {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{flex: 1, marginTop: 26, padding: 6, overflow: 'hidden'}}>
+      <View
+        style={{
+          marginTop: 42,
+          paddingHorizontal: 12,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: '600',
+            textTransform: 'capitalize',
+          }}>
+          Breaking News
+        </Text>
+        <TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 12,
+              fontWeight: '400',
+              color: colors.primary,
+            }}>
+            View All
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          paddingHorizontal: 12,
+          marginTop: 18,
+          overflow: 'hidden',
+        }}>
         <View
           style={{
             height: 160,
-            borderWidth: 1,
-            borderColor: 'gray',
-            borderRadius: 6,
             position: 'relative',
             flexDirection: 'row',
             justifyContent: 'center',
@@ -22,39 +51,65 @@ export default function Home() {
           }}>
           <Image
             source={{uri: 'https://dummyimage.com/600x400/000/fff&text=B'}}
-            style={{position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}
+            style={{
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              borderRadius: 12,
+            }}
           />
-
           <View
             style={{
               position: 'absolute',
-              bottom: 0,
-              width: '100%',
-              paddingHorizontal: 10,
-              paddingVertical: 10,
+              top: 24,
+              borderRadius: 12,
+              left: 12,
+              backgroundColor: colors.primary,
+              paddingVertical: 6,
+              paddingHorizontal: 12,
             }}>
-            <Text style={{color: colors.flat, fontSize: 18}}>
-              Seorang Mahasiswa mendapatkan perlakuan yg kurang...
+            <Text
+              style={{
+                fontWeight: '500',
+                color: colors.flat,
+                fontSize: 12,
+              }}>
+              Sports
             </Text>
-            <Text style={{color: colors.gray, fontSize: 12, marginVertical: 4}}>
-              Kriminal
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 14,
+              left: 24,
+              width: '100%',
+            }}>
+            <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
+              <Text
+                style={{color: colors.flat, fontSize: 16, fontWeight: '500'}}>
+                CNN Indonesia
+              </Text>
+              <Text style={{color: colors.flat, fontSize: 12}}>
+                6 hours ago
+              </Text>
+            </View>
+            <Text
+              style={{
+                color: colors.flat,
+                fontSize: 20,
+                fontWeight: '600',
+                width: '70%',
+              }}>
+              Alexander wears modified helmet in road races
             </Text>
-            <Text style={{color: colors.primary}}>baca selengkapnya..</Text>
           </View>
         </View>
 
-        <Text
-          style={{
-            marginVertical: 14,
-            fontSize: 18,
-            fontWeight: '600',
-            textTransform: 'capitalize',
-          }}>
-          Berita Terkini
-        </Text>
-
         <View
           style={{
+            marginTop: 20,
             height: 40,
             borderRadius: 6,
             flexDirection: 'row',
@@ -62,33 +117,49 @@ export default function Home() {
           }}>
           <TouchableOpacity
             style={{
-              backgroundColor: 'blue',
-              paddingHorizontal: 24,
+              backgroundColor: colors.primary,
+              paddingHorizontal: 12,
               paddingVertical: 8,
-              borderRadius: 6,
+              borderRadius: 16,
               marginRight: 4,
             }}>
-            <Text style={{color: 'white'}}>Masakan</Text>
+            <Text style={{color: colors.flat}}>All</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              backgroundColor: 'blue',
-              paddingHorizontal: 24,
+              backgroundColor: colors.disabled,
+              paddingHorizontal: 12,
               paddingVertical: 8,
-              borderRadius: 6,
+              borderRadius: 16,
               marginRight: 4,
+              borderWidth: 1,
+              borderColor: colors.gray,
             }}>
-            <Text style={{color: 'white'}}>Politik</Text>
+            <Text style={{color: colors.gray}}>Politic</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              backgroundColor: 'blue',
-              paddingHorizontal: 24,
+              borderWidth: 1,
+              borderColor: colors.gray,
+              backgroundColor: colors.disabled,
+              paddingHorizontal: 12,
               paddingVertical: 8,
-              borderRadius: 6,
+              borderRadius: 16,
               marginRight: 4,
             }}>
-            <Text style={{color: 'white'}}>Lainnya</Text>
+            <Text style={{color: colors.gray}}>Sport</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              borderColor: colors.gray,
+              borderWidth: 1,
+              backgroundColor: colors.disabled,
+              paddingHorizontal: 12,
+              paddingVertical: 8,
+              borderRadius: 16,
+              marginRight: 4,
+            }}>
+            <Text style={{color: colors.gray}}>Education</Text>
           </TouchableOpacity>
         </View>
 

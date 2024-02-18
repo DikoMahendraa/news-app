@@ -3,6 +3,7 @@ const mainColors = {
   white: '#ffffff',
   black: 'black',
   gray: '#bbbec4',
+  disabled: '#f6f6f7',
 };
 
 export const colors = {
@@ -10,4 +11,5 @@ export const colors = {
   flat: mainColors.white,
   gray: mainColors.gray,
   black: mainColors.black,
+  disabled: mainColors.disabled,
 };
