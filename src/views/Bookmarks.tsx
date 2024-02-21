@@ -1,9 +1,22 @@
 import {View, Text, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import MoleculesCard from '../components/molecules/Card';
 import AtomSpaces from '../components/atoms/Spaces';
+import {fetchData} from '../services';
+import {BookMarked} from 'lucide-react-native';
+import {colors} from '../utils/colors';
 
 export default function Bookmarks(): JSX.Element {
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    fetchData('https://api-berita-indonesia.vercel.app/antara/terbaru/').then(
+      response => {
+        setNews(response.data.posts);
+      },
+    );
+  }, []);
+
   return (
     <View
       style={{
@@ -11,26 +24,32 @@ export default function Bookmarks(): JSX.Element {
         paddingHorizontal: 12,
         flex: 1,
       }}>
-      <Text style={{fontWeight: '500', fontSize: 16}}>Daftar Bookmarks</Text>
-
-      <View style={{marginTop: 12, marginBottom: 50}}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {Array.from({length: 10}).map(idex => (
-            <>
-              <MoleculesCard
-                onPress={() => ({})}
-                title="title"
-                uri="https://dummyimage.com/600x400/000/fff&text=C"
-                category="sports"
-                author="CNN Indo"
-                time="12 january 2024"
-                key={String(idex)}
-              />
-              <AtomSpaces height={12} key={idex} />
-            </>
-          ))}
-        </ScrollView>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: 4,
+          paddingVertical: 18,
+        }}>
+        <BookMarked color={colors.gray} fill={colors.primary} />
+        <Text style={{fontWeight: '700', fontSize: 18}}>Daftar Bookmarks</Text>
       </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {news.map((item, index) => (
+          <>
+            <MoleculesCard
+              onPress={() => ({})}
+              title={item?.title}
+              uri={item?.thumbnail}
+              category="sports"
+              author={'CNN Indo'}
+              time="12 january 2024"
+              key={index}
+            />
+            <AtomSpaces height={12} key={index + 100} />
+          </>
+        ))}
+      </ScrollView>
     </View>
   );
 }

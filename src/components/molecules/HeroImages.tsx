@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   heroImage: {
     position: 'absolute',
     top: 0,
-    backgroundColor: 'red',
+    backgroundColor: 'gray',
     bottom: 0,
     left: 0,
     right: 0,

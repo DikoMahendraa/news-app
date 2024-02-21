@@ -1,41 +1,45 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import {colors} from '../../utils/colors';
+import {ScrollView} from 'react-native-gesture-handler';
 
-export default function TabMenu() {
+export default function TabMenu({tabs, setState, isActive = false}) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.tab}>
-        <Text style={{color: colors.flat}}>All</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tab}>
-        <Text style={{color: colors.gray}}>Politic</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tab}>
-        <Text style={{color: colors.gray}}>Sport</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tab}>
-        <Text style={{color: colors.gray}}>Education</Text>
-      </TouchableOpacity>
-    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      {tabs.map(item => {
+        return (
+          <TouchableOpacity
+            onPress={() => setState(item)}
+            key={item}
+            style={styles.tab({isActive: isActive === item})}>
+            <Text
+              style={{
+                color: isActive === item ? colors.flat : colors.gray,
+                textTransform: 'capitalize',
+              }}>
+              {item}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
     height: 40,
     borderRadius: 6,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  tab: {
-    backgroundColor: colors.disabled,
+  tab: ({isActive}: {isActive: boolean}) => ({
+    backgroundColor: isActive ? colors.primary : colors.disabled,
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 16,
     marginRight: 4,
     borderWidth: 1,
     borderColor: colors.gray,
-  },
+  }),
 });
