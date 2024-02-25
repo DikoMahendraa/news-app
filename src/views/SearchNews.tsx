@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  FlatList,
+} from 'react-native';
 import {Search} from 'lucide-react-native';
 import MoleculesCard from '../components/molecules/Card';
 import AtomSpaces from '../components/atoms/Spaces';
@@ -19,8 +26,24 @@ const SearchNews: React.FC = () => {
     );
   }, []);
 
+  const renderNewsItem = ({item, index}: {item: any; index: number}) => (
+    <View key={index}>
+      <MoleculesCard
+        onPress={() => setTabActive(item)}
+        title={item?.title}
+        uri={item?.thumbnail}
+        category="sports"
+        author={'CNN Indo'}
+        time="12 january 2024"
+      />
+      <AtomSpaces height={12} />
+    </View>
+  );
+
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Discover</Text>
         <Text style={styles.subHeaderText}>News from all around</Text>
@@ -43,31 +66,25 @@ const SearchNews: React.FC = () => {
         />
       </View>
 
-      <View style={styles.newsContainer}>
-        {news.map((item: any, index: number) => (
-          <React.Fragment key={index}>
-            <MoleculesCard
-              onPress={() => setTabActive(item)}
-              title={item?.title}
-              uri={item?.thumbnail}
-              category="sports"
-              author={'CNN Indo'}
-              time="12 january 2024"
-            />
-            <AtomSpaces height={12} />
-          </React.Fragment>
-        ))}
-      </View>
+      <FlatList
+        data={news}
+        renderItem={renderNewsItem}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.newsContainer}
+      />
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 40,
+    flexGrow: 1,
+    backgroundColor: colors.white,
     paddingHorizontal: 12,
   },
   header: {
+    marginTop: 20,
     marginBottom: 20,
   },
   headerText: {
@@ -87,9 +104,12 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     borderRadius: 20,
     paddingHorizontal: 12,
-    backgroundColor: colors.disabled,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.gray,
   },
   searchInput: {
+    flex: 1,
     paddingVertical: 12,
     borderRadius: 24,
     paddingHorizontal: 10,

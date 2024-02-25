@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet, FlatList} from 'react-native';
 import MoleculesCard from '../components/molecules/Card';
 import AtomSpaces from '../components/atoms/Spaces';
 import AtomLabel from '../components/atoms/Label';
 import MoleHeroImages from '../components/molecules/HeroImages';
 import {fetchData} from '../services';
+import {colors} from '../utils/colors';
+
 interface NewsItem {
   image: string;
   title: string;
@@ -40,50 +42,55 @@ const Home: React.FC<Props> = ({navigation}) => {
       });
   }, []);
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <AtomSpaces height={42} />
-      <AtomLabel
-        rootStyle={{paddingHorizontal: 12}}
-        title="Breaking News"
-        subtitle="View All"
+  const renderNewsItem = ({item}: {item: NewsItem}) => (
+    <View>
+      <MoleculesCard
+        onPress={() => navigation.navigate('NewsDetail', {itemId: 86})}
+        title={item?.title}
+        uri={item?.thumbnail}
+        category="Sports"
+        author="Diko Mahendra"
+        time="~ 24 Feb 2024"
       />
-      <View style={styles.containerContain}>
-        {topNews && (
-          <>
-            <MoleHeroImages uri={topNews.image} title={topNews.title} />
-            <AtomSpaces height={20} />
-          </>
-        )}
-        <AtomLabel title="Recommendations" subtitle="View All" />
-        <AtomSpaces height={20} />
-        <View>
-          {news.map((item, index) => (
-            <View key={index}>
-              <MoleculesCard
-                onPress={() =>
-                  navigation.navigate('NewsDetail', {
-                    itemId: 86,
-                  })
-                }
-                title={item?.title}
-                uri={item?.thumbnail}
-                category="Sports"
-                author="Diko Mahendra"
-                time="~ 24 Feb 2024"
-              />
-              <AtomSpaces height={12} />
-            </View>
-          ))}
+      <AtomSpaces height={12} />
+    </View>
+  );
+
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <AtomSpaces height={42} />
+        <AtomLabel
+          rootStyle={{paddingHorizontal: 12}}
+          title="Breaking News"
+          subtitle="View All"
+        />
+        <View style={styles.containerContain}>
+          {topNews && (
+            <>
+              <MoleHeroImages uri={topNews.image} title={topNews.title} />
+              <AtomSpaces height={20} />
+            </>
+          )}
+          <AtomLabel title="Recommendations" subtitle="View All" />
+          <AtomSpaces height={20} />
+          <FlatList
+            data={news}
+            renderItem={renderNewsItem}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  containerContain: {
+  container: {
     flex: 1,
+    backgroundColor: colors.white,
+  },
+  containerContain: {
     paddingHorizontal: 12,
     marginTop: 18,
     overflow: 'hidden',
