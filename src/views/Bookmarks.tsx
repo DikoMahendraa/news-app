@@ -1,13 +1,13 @@
-import {View, Text, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import MoleculesCard from '../components/molecules/Card';
-import AtomSpaces from '../components/atoms/Spaces';
-import {fetchData} from '../services';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {BookMarked} from 'lucide-react-native';
+import {fetchData} from '../services';
+import MoleculeCard from '../components/molecules/Card';
+import AtomSpaces from '../components/atoms/Spaces';
 import {colors} from '../utils/colors';
 
-export default function Bookmarks(): JSX.Element {
-  const [news, setNews] = useState([]);
+const BookmarksScreen: React.FC = () => {
+  const [news, setNews] = useState<any[]>([]);
 
   useEffect(() => {
     fetchData('https://api-berita-indonesia.vercel.app/antara/terbaru/').then(
@@ -18,38 +18,46 @@ export default function Bookmarks(): JSX.Element {
   }, []);
 
   return (
-    <View
-      style={{
-        marginTop: 40,
-        paddingHorizontal: 12,
-        flex: 1,
-      }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          gap: 4,
-          paddingVertical: 18,
-        }}>
+    <View style={styles.container}>
+      <View style={styles.header}>
         <BookMarked color={colors.green} />
-        <Text style={{fontWeight: '700', fontSize: 18}}>Daftar Bookmarks</Text>
+        <Text style={styles.headerText}>Daftar Bookmarks</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         {news.map((item, index) => (
-          <>
-            <MoleculesCard
-              onPress={() => ({})}
+          <View key={index}>
+            <MoleculeCard
+              onPress={() => {}}
               title={item?.title}
               uri={item?.thumbnail}
               category="sports"
-              author={'CNN Indo'}
+              author="CNN Indo"
               time="12 january 2024"
-              key={index}
             />
-            <AtomSpaces height={12} key={index + 100} />
-          </>
+            <AtomSpaces height={12} />
+          </View>
         ))}
       </ScrollView>
     </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 40,
+    paddingHorizontal: 12,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingVertical: 18,
+  },
+  headerText: {
+    fontWeight: '700',
+    fontSize: 18,
+  },
+});
+
+export default BookmarksScreen;

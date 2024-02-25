@@ -21,7 +21,7 @@ const TabMenu: React.FC<TabMenuProps> = ({
   isActive = false,
 }) => {
   const tabStyle = (paramsIsActive: boolean): StyleProp<ViewStyle> => ({
-    backgroundColor: paramsIsActive ? colors.primary : colors.disabled,
+    backgroundColor: paramsIsActive ? colors.blue : colors.disabled,
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
@@ -43,7 +43,7 @@ const TabMenu: React.FC<TabMenuProps> = ({
           <Text
             style={[
               styles.tabText,
-              {color: isActive === item ? colors.flat : colors.gray},
+              {color: isActive === item ? colors.white : colors.gray},
             ]}>
             {item.toUpperCase()}
           </Text>

@@ -40,12 +40,15 @@ const BottomNavigator = ({
           switch (route.name.toLowerCase()) {
             case 'berita':
               return (
-                <Home color={isFocused ? colors.flat : colors.gray} size={20} />
+                <Home
+                  color={isFocused ? colors.white : colors.gray}
+                  size={20}
+                />
               );
             case 'cari':
               return (
                 <Search
-                  color={isFocused ? colors.flat : colors.gray}
+                  color={isFocused ? colors.white : colors.gray}
                   size={20}
                 />
               );
@@ -54,7 +57,7 @@ const BottomNavigator = ({
             default:
               return (
                 <Bookmark
-                  color={isFocused ? colors.flat : colors.gray}
+                  color={isFocused ? colors.white : colors.gray}
                   size={20}
                 />
               );
@@ -88,7 +91,7 @@ export default BottomNavigator;
 const styles = StyleSheet.create({
   rootContainer: {
     flexDirection: 'row',
-    backgroundColor: colors.flat,
+    backgroundColor: colors.white,
     paddingVertical: 6,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
   // @ts-ignore
   tabMenu: ({isFocused}: {isFocused: boolean}) => ({
     width: '100%',
-    backgroundColor: isFocused ? colors.primary : 'white',
+    backgroundColor: isFocused ? colors.blue : colors.white,
     paddingHorizontal: 18,
     paddingVertical: 10,
     flexDirection: 'row',
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
   }),
   // @ts-ignore
   tabTitle: ({isFocused}) => ({
-    color: isFocused ? colors.flat : colors.black,
+    color: isFocused ? colors.white : colors.black,
     fontSize: 12,
   }),
 });

@@ -18,14 +18,14 @@ const AtomChip: React.FC<AtomChipProps> = ({text, style}) => {
 const styles = StyleSheet.create({
   chip: {
     borderRadius: 12,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.blue,
     paddingVertical: 6,
     paddingHorizontal: 12,
   },
   textChip: {
     textAlign: 'center',
     fontWeight: '500',
-    color: colors.flat,
+    color: colors.white,
     fontSize: 12,
   },
 });

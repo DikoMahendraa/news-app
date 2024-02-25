@@ -1,5 +1,6 @@
 import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import React from 'react';
+import {colors} from '../../utils/colors';
 
 const MoleculesCard = ({
   onPress,
@@ -9,15 +10,15 @@ const MoleculesCard = ({
   category,
   author,
 }: Readonly<{
-  onPress: () => void;
-  title: string;
-  time: string;
-  author: string;
-  uri: string;
-  category: string;
+  onPress: (params?: string) => void;
+  title?: string;
+  time?: string;
+  author?: string;
+  uri?: string;
+  category?: string;
 }>) => {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.cardContainer}>
+    <TouchableOpacity onPress={() => onPress()} style={styles.cardContainer}>
       <Image source={{uri: uri}} style={styles.image} />
       <View style={styles.contentContainer}>
         <Text style={styles.category}>{category}</Text>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontWeight: '400',
     fontSize: 12,
-    color: 'gray',
+    color: colors.black,
   },
   time: {
     textTransform: 'capitalize',

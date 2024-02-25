@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 12,
-    color: colors.primary,
+    color: colors.blue,
     fontWeight: '400',
     textTransform: 'capitalize',
   },

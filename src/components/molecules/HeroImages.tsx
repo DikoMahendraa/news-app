@@ -54,17 +54,17 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   source: {
-    color: colors.flat,
+    color: colors.white,
     fontSize: 16,
     fontWeight: '500',
     marginRight: 12,
   },
   date: {
-    color: colors.flat,
+    color: colors.white,
     fontSize: 12,
   },
   bigTitle: {
-    color: colors.flat,
+    color: colors.white,
     fontSize: 20,
     fontWeight: '600',
     width: '70%',
