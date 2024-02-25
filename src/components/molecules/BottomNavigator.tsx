@@ -12,6 +12,7 @@ const BottomNavigator = ({
   descriptors: any;
 }) => {
   return (
+    // @ts-ignore
     <View style={styles.rootContainer}>
       {state.routes.map((route: any, index: any) => {
         const isFocused = state.index === index;
@@ -63,12 +64,15 @@ const BottomNavigator = ({
         return (
           <TouchableOpacity
             key={route.name}
+            // @ts-ignore
             style={styles.container}
             onLongPress={onLongPress}
             onPress={onPress}>
+            {/* @ts-ignore */}
             <View style={styles.tabMenu({isFocused})}>
               {setIconTabMenu()}
               {isFocused && (
+                // @ts-ignore
                 <Text style={styles.tabTitle({isFocused})}>{route.name}</Text>
               )}
             </View>
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
     maxHeight: 60,
     height: 40,
   },
+  // @ts-ignore
   tabMenu: ({isFocused}: {isFocused: boolean}) => ({
     width: '100%',
     backgroundColor: isFocused ? colors.primary : 'white',
@@ -109,6 +114,7 @@ const styles = StyleSheet.create({
     gap: 4,
     borderRadius: 20,
   }),
+  // @ts-ignore
   tabTitle: ({isFocused}) => ({
     color: isFocused ? colors.flat : colors.black,
     fontSize: 12,

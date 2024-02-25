@@ -3,48 +3,66 @@ import React from 'react';
 import {colors} from '../../utils/colors';
 import AtomChip from '../atoms/Chip';
 
-export default function MoleHeroImages({uri, title}) {
+interface MoleHeroImagesProps {
+  uri: string;
+  title: string;
+}
+
+const MoleHeroImages: React.FC<MoleHeroImagesProps> = ({uri, title}) => {
   return (
     <View style={styles.container}>
       <Image source={{uri: uri}} style={styles.heroImage} />
-      <AtomChip text="Sports" />
-      <View style={styles.containerContain}>
-        <View style={styles.containRow}>
-          <Text style={styles.containRowSrc}>CNN Indonesia</Text>
-          <Text style={styles.containRowDate}>6 hours ago</Text>
+      <View style={styles.overlay}>
+        <View style={{maxWidth: 80, marginBottom: 12}}>
+          <AtomChip text="Sports" />
         </View>
-        <Text style={styles.bigTitle}>{title}</Text>
+        <View style={styles.textContainer}>
+          <View style={styles.rowContainer}>
+            <Text style={styles.source}>{'CNN Indonesia'}</Text>
+            <Text style={styles.date}>{'6 hours ago'}</Text>
+          </View>
+          <Text style={styles.bigTitle}>{title}</Text>
+        </View>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     height: 160,
     position: 'relative',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: 12,
+    overflow: 'hidden',
   },
   heroImage: {
-    position: 'absolute',
-    top: 0,
-    backgroundColor: 'gray',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    borderRadius: 12,
-  },
-  containerContain: {
-    position: 'absolute',
-    bottom: 14,
-    left: 24,
     width: '100%',
+    height: '100%',
   },
-  containRow: {flexDirection: 'row', alignItems: 'center', gap: 12},
-  containRowSrc: {color: colors.flat, fontSize: 16, fontWeight: '500'},
-  containRowDate: {color: colors.flat, fontSize: 12},
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 16,
+    justifyContent: 'flex-end',
+  },
+  textContainer: {
+    marginBottom: 12,
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  source: {
+    color: colors.flat,
+    fontSize: 16,
+    fontWeight: '500',
+    marginRight: 12,
+  },
+  date: {
+    color: colors.flat,
+    fontSize: 12,
+  },
   bigTitle: {
     color: colors.flat,
     fontSize: 20,
@@ -52,3 +70,5 @@ const styles = StyleSheet.create({
     width: '70%',
   },
 });
+
+export default MoleHeroImages;

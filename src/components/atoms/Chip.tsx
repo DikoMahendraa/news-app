@@ -1,28 +1,33 @@
-import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import {View, Text, StyleSheet, TextStyle} from 'react-native';
 import {colors} from '../../utils/colors';
 
-export default function AtomChip({text}: {text: string}) {
+interface AtomChipProps {
+  text: string;
+  style?: TextStyle;
+}
+
+const AtomChip: React.FC<AtomChipProps> = ({text, style}) => {
   return (
-    <View style={styles.chip}>
+    <View style={[styles.chip, style]}>
       <Text style={styles.textChip}>{text}</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   chip: {
-    position: 'absolute',
-    top: 24,
     borderRadius: 12,
-    left: 12,
     backgroundColor: colors.primary,
     paddingVertical: 6,
     paddingHorizontal: 12,
   },
   textChip: {
+    textAlign: 'center',
     fontWeight: '500',
     color: colors.flat,
     fontSize: 12,
   },
 });
+
+export default AtomChip;
