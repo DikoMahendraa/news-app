@@ -31,7 +31,7 @@ export default function Bookmarks(): JSX.Element {
           gap: 4,
           paddingVertical: 18,
         }}>
-        <BookMarked color={colors.gray} fill={colors.primary} />
+        <BookMarked color={colors.green} />
         <Text style={{fontWeight: '700', fontSize: 18}}>Daftar Bookmarks</Text>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>

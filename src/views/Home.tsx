@@ -7,7 +7,7 @@ import AtomLabel from '../components/atoms/Label';
 import MoleHeroImages from '../components/molecules/HeroImages';
 import {fetchData} from '../services';
 
-export default function Home() {
+export default function Home({navigation}) {
   const [news, setNews] = useState([]);
   const [topNews, setTopNews] = useState({});
 
@@ -44,7 +44,11 @@ export default function Home() {
           {news.map((item, index) => (
             <>
               <MoleculesCard
-                onPress={() => ({})}
+                onPress={() =>
+                  navigation.navigate('NewsDetail', {
+                    itemId: 86,
+                  })
+                }
                 title={item?.title}
                 uri={item?.thumbnail}
                 category="sports"
